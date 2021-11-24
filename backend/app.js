@@ -6,7 +6,8 @@ const path = require('path');
 const helmet = require('helmet');
 require('dotenv').config();
 
-const saucesRoutes = require('./routes/sauces');
+const messageRoutes = require("./routes/message");
+const answerRoutes = require("./routes/answer");
 const userRoutes = require('./routes/user');
 
 mongoose.connect(process.env.SECRET_DB,
@@ -25,12 +26,11 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-
 app.use(helmet());
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use('/api/sauces', saucesRoutes);
+app.use('/api/messages', messageRoutes); 
+app.use('/api/answers', answerRoutes); 
 app.use('/api/auth', userRoutes);
 
 module.exports = app;

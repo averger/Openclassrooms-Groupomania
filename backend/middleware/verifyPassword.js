@@ -1,5 +1,5 @@
-const passwordSchema = require('../models/Password');
-
+//const passwordSchema = require('../models/Password');
+const { passwordSchema } = require('../models/index');
 
 module.exports = (req, res, next) => {
     if (!passwordSchema.validate(req.body.password)) {
